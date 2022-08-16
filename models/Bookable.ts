@@ -9,9 +9,9 @@ const bookableSchema = new mongoose.Schema({
         maxLength: 50,
     },
     description: String ,
-    isAvailable : {
+    isReserved : {
         type: Boolean,
-        default: true,
+        default: false,
     },
     capacity : {
         type: Number,
@@ -21,6 +21,14 @@ const bookableSchema = new mongoose.Schema({
             validator : Number.isInteger,
             message   : '{VALUE} is not an integer value. Should be int for members count'
         }
+    },
+    reservedBy : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserAccountModel'
+    },
+    returnedAt : {
+        type: Date,
+        default: null
     }
 }) ;
 
