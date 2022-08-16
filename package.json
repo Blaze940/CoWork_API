@@ -1,0 +1,33 @@
+{
+  "name": "cowork_api",
+  "version": "1.0.0",
+  "description": "Install env , npm init, \nInstallation des dependances npm i -D, \nConfig Typescripttsc --init, \n npm start",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && nodemon ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "cors": "^2.8.5",
+    "eslint": "^8.21.0",
+    "eslint-import-resolver-typescript": "^3.4.0",
+    "nodemon": "^2.0.19"
+  }
+}
