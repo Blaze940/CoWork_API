@@ -7,7 +7,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const ServiceEnum_1 = __importDefault(require("../enums/ServiceEnum"));
 const serviceSchema = new mongoose_1.default.Schema({
     name: {
-        type: ServiceEnum_1.default,
+        type: String,
+        enum: ServiceEnum_1.default,
         required: true,
         minLength: 2,
         maxLength: 20

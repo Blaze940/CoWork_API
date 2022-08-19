@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 import MonthsOfEngagement from "../enums/MonthsOfEngagement";
 
 const subscriptionPriceSchema = new mongoose.Schema({
@@ -22,7 +22,8 @@ const subscriptionPriceSchema = new mongoose.Schema({
         min: 0
     },
     minMonthsEngagement: {
-        type: MonthsOfEngagement,
+        type: Number,
+        enum: MonthsOfEngagement,
         required: true,
         min: 0,
         validate : {

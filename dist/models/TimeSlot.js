@@ -4,15 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+const DaysEnum_1 = __importDefault(require("../enums/DaysEnum"));
 const timeSlotSchema = new mongoose_1.default.Schema({
-    /*belongsTo: {
-        type: mongoose.Schema.Types.ObjectId,
-        //ref : "SpaceModel"
-        ref: "SubscriptionPrice",
-        required: true
-    },*/
     day: {
         type: String,
+        enum: DaysEnum_1.default,
         required: true,
         minLength: 1,
         maxLength: 10
@@ -22,7 +18,11 @@ const timeSlotSchema = new mongoose_1.default.Schema({
         required: true,
         default: 8,
         min: 0,
-        max: 24
+        max: 24,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value. Should be int for startTime'
+        }
     },
     endTime: {
         type: Number,
@@ -30,6 +30,10 @@ const timeSlotSchema = new mongoose_1.default.Schema({
         default: 21,
         min: 0,
         max: 24,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value. Should be int for endTime'
+        }
     }
 });
 // startTime < endTime

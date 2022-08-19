@@ -12,6 +12,9 @@ const subscriptionPriceSchema = new mongoose_1.default.Schema({
         minLength: 3,
         maxLength: 255
     },
+    description: {
+        type: String,
+    },
     priceWithEng: {
         type: Number,
         required: true,
@@ -22,11 +25,9 @@ const subscriptionPriceSchema = new mongoose_1.default.Schema({
         required: true,
         min: 0
     },
-    description: {
-        type: String,
-    },
     minMonthsEngagement: {
-        type: MonthsOfEngagement_1.default,
+        type: Number,
+        enum: MonthsOfEngagement_1.default,
         required: true,
         min: 0,
         validate: {

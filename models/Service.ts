@@ -3,7 +3,8 @@ import ServiceEnum from "../enums/ServiceEnum";
 
 const serviceSchema = new mongoose.Schema({
     name: {
-        type : ServiceEnum,
+        type : String,
+        enum : ServiceEnum,
         required : true,
         minLength: 2,
         maxLength: 20

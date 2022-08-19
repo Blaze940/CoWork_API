@@ -5,8 +5,11 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import cors from 'cors';
 import HoraryPriceRouter from './routes/HoraryPriceRoute';
-import ActivityRoute from "./routes/ActivityRoute";
-import ProductRoute from "./routes/ProductRoute";
+import ActivityRouter from "./routes/ActivityRoute";
+import ProductRouter from "./routes/ProductRoute";
+import SubscriptionPriceRouter from "./routes/SubscriptionPriceRoute";
+import TimeSlotRouter from "./routes/TimeSlotRoute";
+import ServiceRouter from "./routes/ServiceRoute";
 
 dotenv.config();
 
@@ -28,10 +31,15 @@ app.use("/test123", (req: Request, res: Response) => {
     res.send("API sucessfully launched");
 });
 
-//TEST ROUTE FOR HORARY PRICE
+//Use des routes de bases
 app.use("/API/horaryPrice", HoraryPriceRouter);
-app.use("/API/activity", ActivityRoute);
-app.use("/API/product", ProductRoute);
+app.use("/API/activity", ActivityRouter);
+app.use("/API/product", ProductRouter);
+app.use("/API/subscriptionPrice", SubscriptionPriceRouter);
+app.use("/API/timeSlot", TimeSlotRouter);
+app.use("/API/service", ServiceRouter);
+
+
 
 //Connexion MongoDb
 mongoose.connect(MONGO_URL,{})
