@@ -14,15 +14,6 @@ const activitySchema = new mongoose_1.default.Schema({
         type: String,
         required: true,
     },
-    nbrOfParticipants: {
-        type: Number,
-        required: true,
-        min: 0,
-        validate: {
-            validator: Number.isInteger,
-            message: '{VALUE} is not an integer value. Should be int for members count'
-        }
-    },
     maxClient: {
         type: Number,
         default: 20,
@@ -32,6 +23,14 @@ const activitySchema = new mongoose_1.default.Schema({
             validator: Number.isInteger,
             message: '{VALUE} is not an integer value'
         }
+    },
+    listOfParticipants: [String]
+});
+//size listofparticpants shouldn't be greater than maxClient
+activitySchema.pre('save', function (next) {
+    if (this.listOfParticipants.length > this.maxClient) {
+        next(new Error('listOfParticipants size should be less than maxClient'));
     }
+    next();
 });
 exports.default = mongoose_1.default.model("ActivityModel", activitySchema);

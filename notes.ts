@@ -14,3 +14,9 @@
 });*/
 
 //BelongsTo dans HoraryPrice a modifier par CARD_ID
+
+//Horary price Routes à MODIFIER CAR MANQUE MIDDLEWARE
+
+//Erreur Postman sur requete : Retirer ?retryWrites=true&w=majority dans MONGO_URL et remplacer par nom de la base qu'on veut creer."test" ici par exemple
+
+//UserMiddleware a rectifier

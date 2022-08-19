@@ -53,12 +53,12 @@ const registrationFormSchema = new mongoose.Schema({
     },
     dateEndSubscription : {
         type: Date,
-        default: Date.now,
+        default: null,
         required: true,
     },
     dateRenewal: {
         type: Date,
-        default: Date.now,
+        default: null,
         required: true,
     },
 });

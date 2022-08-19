@@ -25,7 +25,7 @@ exports.userAccountSchema = new mongoose_1.default.Schema({
         type: String,
         required: true,
         minLength: 2,
-        maxLength: 255,
+        maxLength: 1024,
     },
     role: {
         type: UserRole_1.default,

@@ -1,8 +1,12 @@
 console.log("\nIndex is beeing read") ;
+
 import express, {Response, Request} from 'express';
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import cors from 'cors';
+import HoraryPriceRouter from './routes/HoraryPriceRoute';
+import ActivityRoute from "./routes/ActivityRoute";
+import ProductRoute from "./routes/ProductRoute";
 
 dotenv.config();
 
@@ -16,11 +20,18 @@ app.use(cors());
 //Retrieve the body of the request
 app.use(express.json());
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 //First route test
 app.use("/test123", (req: Request, res: Response) => {
     console.log("\nFirst Route succeed");
     res.send("API sucessfully launched");
 });
+
+//TEST ROUTE FOR HORARY PRICE
+app.use("/API/horaryPrice", HoraryPriceRouter);
+app.use("/API/activity", ActivityRoute);
+app.use("/API/product", ProductRoute);
 
 //Connexion MongoDb
 mongoose.connect(MONGO_URL,{})

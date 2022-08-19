@@ -20,7 +20,7 @@ export const userAccountSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 2,
-        maxLength: 255,
+        maxLength: 1024,
     },
     role: {
         type: userRole,

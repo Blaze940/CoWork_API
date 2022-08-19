@@ -8,6 +8,9 @@ const subscriptionPriceSchema = new mongoose.Schema({
         minLength: 3,
         maxLength: 255
     },
+    description: {
+        type: String,
+    },
     priceWithEng: {
         type: Number,
         required: true,
@@ -18,9 +21,6 @@ const subscriptionPriceSchema = new mongoose.Schema({
         required: true,
         min: 0
     },
-    description: {
-        type: String,
-    },
     minMonthsEngagement: {
         type: MonthsOfEngagement,
         required: true,
@@ -30,7 +30,6 @@ const subscriptionPriceSchema = new mongoose.Schema({
             message   : '{VALUE} is not an integer value. Should be int for Months minimum engagement'
         }
     },
-    }
-);
+});
 
 export default mongoose.model("SubscriptionPriceModel", subscriptionPriceSchema);

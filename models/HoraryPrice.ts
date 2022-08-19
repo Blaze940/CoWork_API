@@ -22,8 +22,7 @@ const horaryPriceSchema = new mongoose.Schema({
         required: true,
         min: 0,
     }
-}
-);
+});
 //if card.studentReductionPrice is not null, then horaryPriceSchema.plus5hours = card.studentReductionPrice
 
 export default mongoose.model("HoraryPriceModel", horaryPriceSchema);
