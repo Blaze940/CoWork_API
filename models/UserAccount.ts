@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
-import  userRole  from "../enums/UserRole";
+import userRole  from "../enums/UserRole";
+import Bookable from "./Bookable";
+import Activity from "./Activity";
+import MealTray from "./MealTray";
 
 export const userAccountSchema = new mongoose.Schema({
     surname: {
@@ -27,19 +30,8 @@ export const userAccountSchema = new mongoose.Schema({
         default: userRole.CLIENT,
         required: true,
     },
-    reservations : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref: 'BookableModel',
-    },
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'MealTrayModel',
-    },],
-    participations : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref: 'ActivityModel',
-    }],
-
+    reservations : [Bookable.schema,MealTray.schema],
+    participations : [Activity.schema]
 });
 
 export default mongoose.model("UserAccountModel", userAccountSchema);

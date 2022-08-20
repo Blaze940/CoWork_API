@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Product from "../models/Product";
 
 const mealTraySchema = new mongoose.Schema({
     name: {
@@ -8,10 +9,7 @@ const mealTraySchema = new mongoose.Schema({
         maxLength: 50,
     },
     description: String ,
-    menu: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "ProductModel",
-    }],
+    menu: [Product.schema],
 }) ;
 
 export default mongoose.model("MealTrayModel", mealTraySchema);

@@ -5,7 +5,8 @@ enum ServiceEnum {
     SNACKDRINK = "SNACKDRINK",
     PLUG = "PLUG",
     WORKSPACE = "WORKSPACE",
-    PHONEBOOTH = "PHONEBOOTH"
+    PHONEBOOTH = "PHONEBOOTH",
+    PRINTER = "PRINTER"
 }
 
 export default ServiceEnum;

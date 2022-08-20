@@ -1,4 +1,4 @@
-console.log("\nIndex is beeing read") ;
+console.log("\nIndex is beeing read ...") ;
 
 import express, {Response, Request} from 'express';
 import mongoose from "mongoose";
@@ -10,6 +10,9 @@ import ProductRouter from "./routes/ProductRoute";
 import SubscriptionPriceRouter from "./routes/SubscriptionPriceRoute";
 import TimeSlotRouter from "./routes/TimeSlotRoute";
 import ServiceRouter from "./routes/ServiceRoute";
+import MealTrayRouter from "./routes/MealTrayRoute";
+import BookableRouter from "./routes/BookableRoute";
+import CardRouter from "./routes/CardRoute";
 
 dotenv.config();
 
@@ -38,6 +41,9 @@ app.use("/API/product", ProductRouter);
 app.use("/API/subscriptionPrice", SubscriptionPriceRouter);
 app.use("/API/timeSlot", TimeSlotRouter);
 app.use("/API/service", ServiceRouter);
+app.use("/API/mealTray", MealTrayRouter);
+app.use("/API/bookable", BookableRouter);
+app.use("/API/card", CardRouter);
 
 
 

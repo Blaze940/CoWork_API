@@ -6,7 +6,6 @@ var BookableEnum;
     BookableEnum["MEETINGROOM"] = "MEETINGROOM";
     BookableEnum["CALLINGROOM"] = "CALLINGROOM";
     BookableEnum["LAPTOP"] = "LAPTOP";
-    BookableEnum["PRINTER"] = "PRINTER";
     BookableEnum["LIVINGROOM"] = "LIVINGROOM";
 })(BookableEnum || (BookableEnum = {}));
 exports.default = BookableEnum;

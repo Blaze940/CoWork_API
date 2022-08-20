@@ -1,5 +1,5 @@
 import {Request,Response} from "express";
-import serviceService from "../models/ServiceService";
+import serviceService from "../services/ServiceService";
 
 const serviceController = {
     getAll: (req :Request, res :Response) => { return serviceService.getServices(res)},

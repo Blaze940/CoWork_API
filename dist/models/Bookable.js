@@ -7,7 +7,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const BookableEnum_1 = __importDefault(require("../enums/BookableEnum"));
 const bookableSchema = new mongoose_1.default.Schema({
     name: {
-        type: BookableEnum_1.default,
+        type: String,
+        enum: BookableEnum_1.default,
         required: true,
         minLength: 2,
         maxLength: 50,
@@ -26,13 +27,11 @@ const bookableSchema = new mongoose_1.default.Schema({
             message: '{VALUE} is not an integer value. Should be int for members count'
         }
     },
-    reservedBy: {
-        type: mongoose_1.default.Schema.Types.ObjectId,
-        ref: 'UserAccountModel'
+    bookedAt: Date,
+    bookedBy: {
+        type: String,
+        uppercase: true,
     },
-    returnedAt: {
-        type: Date,
-        default: null
-    }
+    returnedAt: Date
 });
 exports.default = mongoose_1.default.model("BookableModel", bookableSchema);

@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
 import BookableEnum from "../enums/BookableEnum";
+import UserAccount from "./UserAccount";
 
 const bookableSchema = new mongoose.Schema({
     name: {
-        type: BookableEnum,
+        type: String,
+        enum : BookableEnum,
         required: true,
         minLength: 2,
         maxLength: 50,
@@ -22,14 +24,12 @@ const bookableSchema = new mongoose.Schema({
             message   : '{VALUE} is not an integer value. Should be int for members count'
         }
     },
-    reservedBy : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'UserAccountModel'
-    },
-    returnedAt : {
-        type: Date,
-        default: null
-    }
+    bookedAt : Date,
+    bookedBy : {
+    type : String,
+        uppercase: true,
+},
+    returnedAt : Date
 }) ;
 
 export default mongoose.model("BookableModel", bookableSchema);

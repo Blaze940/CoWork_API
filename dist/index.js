@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-console.log("\nIndex is beeing read");
+console.log("\nIndex is beeing read ...");
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -14,6 +14,9 @@ const ProductRoute_1 = __importDefault(require("./routes/ProductRoute"));
 const SubscriptionPriceRoute_1 = __importDefault(require("./routes/SubscriptionPriceRoute"));
 const TimeSlotRoute_1 = __importDefault(require("./routes/TimeSlotRoute"));
 const ServiceRoute_1 = __importDefault(require("./routes/ServiceRoute"));
+const MealTrayRoute_1 = __importDefault(require("./routes/MealTrayRoute"));
+const BookableRoute_1 = __importDefault(require("./routes/BookableRoute"));
+const CardRoute_1 = __importDefault(require("./routes/CardRoute"));
 dotenv_1.default.config();
 const MONGO_URL = process.env.MONGO_URL || "mongodb+srv://blaze940:5DPXG1oeNMo2yvf1@cluster0.e93id.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
@@ -35,6 +38,9 @@ app.use("/API/product", ProductRoute_1.default);
 app.use("/API/subscriptionPrice", SubscriptionPriceRoute_1.default);
 app.use("/API/timeSlot", TimeSlotRoute_1.default);
 app.use("/API/service", ServiceRoute_1.default);
+app.use("/API/mealTray", MealTrayRoute_1.default);
+app.use("/API/bookable", BookableRoute_1.default);
+app.use("/API/card", CardRoute_1.default);
 //Connexion MongoDb
 mongoose_1.default.connect(MONGO_URL, {})
     .then(() => {
