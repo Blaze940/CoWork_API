@@ -1,9 +1,5 @@
-console.log("\nIndex is beeing read ...") ;
+console.log("\nIndex is beeing read ...\n") ;
 
-import express, {Response, Request} from 'express';
-import mongoose from "mongoose";
-import dotenv from 'dotenv';
-import cors from 'cors';
 import HoraryPriceRouter from './routes/HoraryPriceRoute';
 import ActivityRouter from "./routes/ActivityRoute";
 import ProductRouter from "./routes/ProductRoute";
@@ -13,6 +9,13 @@ import ServiceRouter from "./routes/ServiceRoute";
 import MealTrayRouter from "./routes/MealTrayRoute";
 import BookableRouter from "./routes/BookableRoute";
 import CardRouter from "./routes/CardRoute";
+import UserRouter from "./routes/UserAccountRoute";
+import RegistrationRouter from "./routes/RegistrationRoute";
+import SpaceRouter from "./routes/SpaceRoute";
+import express, {Response, Request} from 'express';
+import mongoose from "mongoose";
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -44,6 +47,9 @@ app.use("/API/service", ServiceRouter);
 app.use("/API/mealTray", MealTrayRouter);
 app.use("/API/bookable", BookableRouter);
 app.use("/API/card", CardRouter);
+app.use("/API/user", UserRouter);
+app.use("/API/registration", RegistrationRouter);
+app.use("/API/space", SpaceRouter);
 
 
 

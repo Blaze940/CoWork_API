@@ -3,9 +3,10 @@ import userRole  from "../enums/UserRole";
 import Bookable from "./Bookable";
 import Activity from "./Activity";
 import MealTray from "./MealTray";
+import Registration from "./Registration";
 
 export const userAccountSchema = new mongoose.Schema({
-    surname: {
+    pseudo: {
         type: String,
         required: true,
         minLength: 2,
@@ -26,12 +27,15 @@ export const userAccountSchema = new mongoose.Schema({
         maxLength: 1024,
     },
     role: {
-        type: userRole,
+        type: String,
+        enum : userRole,
         default: userRole.CLIENT,
         required: true,
     },
-    reservations : [Bookable.schema,MealTray.schema],
-    participations : [Activity.schema]
+    mealTray : MealTray.schema,
+    booked : [Bookable.schema],
+    participations : [Activity.schema],
+    registerForm : Registration.schema
 });
 
 export default mongoose.model("UserAccountModel", userAccountSchema);

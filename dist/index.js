@@ -4,10 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 console.log("\nIndex is beeing read ...");
-const express_1 = __importDefault(require("express"));
-const mongoose_1 = __importDefault(require("mongoose"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const cors_1 = __importDefault(require("cors"));
 const HoraryPriceRoute_1 = __importDefault(require("./routes/HoraryPriceRoute"));
 const ActivityRoute_1 = __importDefault(require("./routes/ActivityRoute"));
 const ProductRoute_1 = __importDefault(require("./routes/ProductRoute"));
@@ -17,6 +13,13 @@ const ServiceRoute_1 = __importDefault(require("./routes/ServiceRoute"));
 const MealTrayRoute_1 = __importDefault(require("./routes/MealTrayRoute"));
 const BookableRoute_1 = __importDefault(require("./routes/BookableRoute"));
 const CardRoute_1 = __importDefault(require("./routes/CardRoute"));
+const UserAccountRoute_1 = __importDefault(require("./routes/UserAccountRoute"));
+const RegistrationRoute_1 = __importDefault(require("./routes/RegistrationRoute"));
+const SpaceRoute_1 = __importDefault(require("./routes/SpaceRoute"));
+const express_1 = __importDefault(require("express"));
+const mongoose_1 = __importDefault(require("mongoose"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 const MONGO_URL = process.env.MONGO_URL || "mongodb+srv://blaze940:5DPXG1oeNMo2yvf1@cluster0.e93id.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
@@ -41,6 +44,9 @@ app.use("/API/service", ServiceRoute_1.default);
 app.use("/API/mealTray", MealTrayRoute_1.default);
 app.use("/API/bookable", BookableRoute_1.default);
 app.use("/API/card", CardRoute_1.default);
+app.use("/API/user", UserAccountRoute_1.default);
+app.use("/API/registration", RegistrationRoute_1.default);
+app.use("/API/space", SpaceRoute_1.default);
 //Connexion MongoDb
 mongoose_1.default.connect(MONGO_URL, {})
     .then(() => {

@@ -9,8 +9,9 @@ const UserRole_1 = __importDefault(require("../enums/UserRole"));
 const Bookable_1 = __importDefault(require("./Bookable"));
 const Activity_1 = __importDefault(require("./Activity"));
 const MealTray_1 = __importDefault(require("./MealTray"));
+const Registration_1 = __importDefault(require("./Registration"));
 exports.userAccountSchema = new mongoose_1.default.Schema({
-    surname: {
+    pseudo: {
         type: String,
         required: true,
         minLength: 2,
@@ -31,11 +32,14 @@ exports.userAccountSchema = new mongoose_1.default.Schema({
         maxLength: 1024,
     },
     role: {
-        type: UserRole_1.default,
+        type: String,
+        enum: UserRole_1.default,
         default: UserRole_1.default.CLIENT,
         required: true,
     },
-    reservations: [Bookable_1.default.schema, MealTray_1.default.schema],
-    participations: [Activity_1.default.schema]
+    mealTray: MealTray_1.default.schema,
+    booked: [Bookable_1.default.schema],
+    participations: [Activity_1.default.schema],
+    registerForm: Registration_1.default.schema
 });
 exports.default = mongoose_1.default.model("UserAccountModel", exports.userAccountSchema);

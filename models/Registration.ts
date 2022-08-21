@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import Card from "./Card";
 
 const registrationFormSchema = new mongoose.Schema({
-    name: {
+    surname: {
         type: String,
         required: true,
         minLength: 2,
@@ -15,26 +16,17 @@ const registrationFormSchema = new mongoose.Schema({
         maxLength: 60,
         uppercase : true,
     },
-    adress: {
+    address: {
         type: String,
         required: true,
         minLength: 2,
         maxLength: 255
     },
-    account : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'UserAccountModel',
-        required: true,
-    },
     isStudent : {
         type: Boolean,
         default: false,
     },
-    card : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref: 'CardModel',
-        required: true,
-    },
+    card : Card.schema,
     dateSubscription : {
         type: Date,
         default: Date.now,
