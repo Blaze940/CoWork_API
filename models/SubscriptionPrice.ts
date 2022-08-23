@@ -1,9 +1,11 @@
 import mongoose, {Schema} from "mongoose";
 import MonthsOfEngagement from "../enums/MonthsOfEngagement";
+import Package from "../enums/Package";
 
 const subscriptionPriceSchema = new mongoose.Schema({
     name: {
         type: String,
+        enum : Package,
         required: true,
         minLength: 3,
         maxLength: 255

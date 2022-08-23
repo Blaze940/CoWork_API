@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
+import Package from "../enums/Package";
 
 const horaryPriceSchema = new mongoose.Schema({
-    /*belongsTo:{
-        // a remplacer par CARD_ID
-        type: mongoose.Schema.Types.ObjectId,
-        ref : "CardModel",
-        required: true,
-    },*/
+    name : {
+        type : String,
+        required : true,
+        enum : Package
+    },
     firstHour: {
         type: Number,
         required: true,
         min: 0,
     },
-    secondHour: {
+    halfHour: {
         type: Number,
         required: true,
         min: 0,

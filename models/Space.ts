@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
+import ServiceEnum from "../enums/ServiceEnum";
+import SpaceEnum from "../enums/SpaceEnum";
 
 const spaceSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        enum : SpaceEnum,
         minLength: 2,
         maxLength: 100,
     },
@@ -17,14 +20,10 @@ const spaceSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref: 'UserAccountModel',
     }],
-    schedules : [{
+    schedule : [{
         type : mongoose.Schema.Types.ObjectId,
         ref: 'TimeSlotModel',
     }],
-    hasMealTrayMember : {
-        type: Boolean,
-        default: false,
-    },
     activities : [{
         type : mongoose.Schema.Types.ObjectId,
         ref: 'ActivityModel',
@@ -34,8 +33,8 @@ const spaceSchema = new mongoose.Schema({
         ref: 'MealTrayModel',
     }],
     services : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref: 'ServiceModel',
+        type : String,
+        enum : ServiceEnum,
     }],
     bookables : [{
         type : mongoose.Schema.Types.ObjectId,

@@ -5,7 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const DaysEnum_1 = __importDefault(require("../enums/DaysEnum"));
+const SpaceEnum_1 = __importDefault(require("../enums/SpaceEnum"));
 const timeSlotSchema = new mongoose_1.default.Schema({
+    belongsTo: {
+        type: String,
+        enum: SpaceEnum_1.default,
+        required: true,
+    },
     day: {
         type: String,
         enum: DaysEnum_1.default,

@@ -30,11 +30,19 @@ export const userAccountSchema = new mongoose.Schema({
         type: String,
         enum : userRole,
         default: userRole.CLIENT,
-        required: true,
     },
-    mealTray : MealTray.schema,
-    booked : [Bookable.schema],
-    participations : [Activity.schema],
+    mealTray : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'MealTrayModel',
+    },
+    booked : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'BookableModel'
+    }],
+    participations : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'ActivityModel'
+    }],
     registerForm : Registration.schema
 });
 

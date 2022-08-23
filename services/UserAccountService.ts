@@ -22,9 +22,9 @@ const userAccountService = {
     },
     getUserAccountByName : async (req: Request, res: Response) => {
         try {
-            const userAccount = await UserAccount.find({name: req.params.name});
+            const userAccount = await UserAccount.find({pseudo: req.params.pseudo});
             if (!userAccount) {
-                return res.status(404).json({ message: "UserAccount with name : "+req.params.name+" not found" });
+                return res.status(404).json({ message: "UserAccount with name : "+req.params.pseudo+" not found" });
             }
             return res.status(200).json(userAccount);
         } catch (error) {
@@ -51,7 +51,7 @@ const userAccountService = {
     },
     updateUserAccountByName: async (req: Request, res: Response) => {
         try {
-            const userAccount = await UserAccount.findOneAndUpdate({name: req.params.name}, req.body, {
+            const userAccount = await UserAccount.findOneAndUpdate({pseudo: req.params.pseudo}, req.body, {
                 new: true,
             });
             return res.status(200).json(userAccount);

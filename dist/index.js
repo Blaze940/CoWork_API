@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-console.log("\nIndex is beeing read ...");
+console.log("\nIndex is beeing read ...\n");
 const HoraryPriceRoute_1 = __importDefault(require("./routes/HoraryPriceRoute"));
 const ActivityRoute_1 = __importDefault(require("./routes/ActivityRoute"));
 const ProductRoute_1 = __importDefault(require("./routes/ProductRoute"));

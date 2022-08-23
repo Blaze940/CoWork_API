@@ -4,19 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+const Package_1 = __importDefault(require("../enums/Package"));
 const horaryPriceSchema = new mongoose_1.default.Schema({
-    /*belongsTo:{
-        // a remplacer par CARD_ID
-        type: mongoose.Schema.Types.ObjectId,
-        ref : "CardModel",
+    name: {
+        type: String,
         required: true,
-    },*/
+        enum: Package_1.default
+    },
     firstHour: {
         type: Number,
         required: true,
         min: 0,
     },
-    secondHour: {
+    halfHour: {
         type: Number,
         required: true,
         min: 0,

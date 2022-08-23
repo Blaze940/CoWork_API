@@ -3,8 +3,7 @@ import Package from "../enums/Package";
 import Activity from "./Activity";
 import Service from "./Service";
 import Bookable from "./Bookable";
-import SubscriptionPrice from "./SubscriptionPrice";
-import HoraryPrice from "./HoraryPrice";
+import ServiceEnum from "../enums/ServiceEnum";
 
 const cardSchema = new mongoose.Schema({
     name : {
@@ -13,16 +12,22 @@ const cardSchema = new mongoose.Schema({
         required: true,
         default : Package.FREE,
     },
-    proposedActivities : [Activity.schema] ,
-    proposedServices : [Service.schema],
-    proposedBookable : [Bookable.schema],
+    proposedServices : [{
+        type : String,
+        enum : ServiceEnum,
+    }],
     studentReductionPrice : {
         type: Number,
-        default : 20,
         min : 0,
     },
-    subscriptionPrice : SubscriptionPrice.schema,
-    horaryPrice : HoraryPrice.schema,
+    subscriptionPrice : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'SubscriptionPriceModel',
+    },
+    horaryPrice : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'HoraryPriceModel',
+    }
 });
 
 export default mongoose.model("CardModel", cardSchema);

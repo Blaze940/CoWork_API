@@ -9,7 +9,7 @@ const registrationFormSchema = new mongoose.Schema({
         maxLength: 50,
         lowercase: true,
     },
-    lastName: {
+    lastname: {
         type: String,
         required: true,
         minLength: 2,
@@ -26,11 +26,13 @@ const registrationFormSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    card : Card.schema,
+    card : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'CardModel'
+    },
     dateSubscription : {
         type: Date,
         default: Date.now,
-        required: true,
     },
     hasPaid : {
         type: Boolean,
@@ -40,18 +42,15 @@ const registrationFormSchema = new mongoose.Schema({
     //Tout ce qui suit appliqué uniquement si abonnement Payant
     dateLastPayment : {
         type: Date,
-        default: Date.now,
-        required: true,
+        default: null,
     },
     dateEndSubscription : {
         type: Date,
         default: null,
-        required: true,
     },
     dateRenewal: {
         type: Date,
         default: null,
-        required: true,
     },
 });
 

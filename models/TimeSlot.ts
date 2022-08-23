@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
 import DaysEnum from "../enums/DaysEnum";
+import SpaceEnum from "../enums/SpaceEnum";
 const timeSlotSchema = new mongoose.Schema({
+    belongsTo : {
+        type : String,
+        enum : SpaceEnum,
+        required : true,
+    },
     day : {
         type: String,
         enum: DaysEnum,
