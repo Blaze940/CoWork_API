@@ -26,16 +26,17 @@ const app = express();
 //use cors middleware to allow cross-origin resource sharing
 app.use(cors());
 
+
 //Retrieve the body of the request
 app.use(express.json());
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 //First route test
-app.use("/test123", (req: Request, res: Response) => {
-    console.log("\nFirst Route succeed");
-    res.send("API sucessfully launched");
-});
+// app.use("/API", (req: Request, res: Response) => {
+//     //console.log("\nFirst Route succeed");
+//     res.send("Connected to API Co'Work sucessfully !");
+// });
 
 //Use des routes de bases
 app.use("/API/horaryPrice", HoraryPriceRouter);

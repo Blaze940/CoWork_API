@@ -10,7 +10,6 @@ const Registration_1 = __importDefault(require("./Registration"));
 exports.userAccountSchema = new mongoose_1.default.Schema({
     pseudo: {
         type: String,
-        required: true,
         minLength: 2,
         maxLength: 255,
         unique: true

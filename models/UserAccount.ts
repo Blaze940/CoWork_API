@@ -8,7 +8,6 @@ import Registration from "./Registration";
 export const userAccountSchema = new mongoose.Schema({
     pseudo: {
         type: String,
-        required: true,
         minLength: 2,
         maxLength: 255,
         unique : true

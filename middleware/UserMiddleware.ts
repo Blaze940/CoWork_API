@@ -1,6 +1,7 @@
 import {NextFunction,Request, Response} from "express";
 import jsonwebtoken from "jsonwebtoken";
 import UserRole from "../enums/UserRole";
+import {User} from "../types/user";
 
 const UserMiddleware = {
     isAuthenticated: (req: Request, res: Response, next: NextFunction) => {
@@ -11,7 +12,9 @@ const UserMiddleware = {
 
                 if (UserMiddleware.isValidToken(token)) {
 
-                    const user = jsonwebtoken.decode(token) ;
+                    const user = jsonwebtoken.decode(token) as User;
+
+                    req.user = user;
 
                     return next();
                 }
@@ -27,20 +30,20 @@ const UserMiddleware = {
         }
     },
     isAdmin: (req: Request, res: Response, next: NextFunction) => {
-        if(req.body.role === UserRole.ADMIN){
+        if(req.user && req.user.role === UserRole.ADMIN){
                 return next();
         }
-        return res.status(403).json({ message: 'Forbidden'})
+        return res.status(403).json({ message: 'Forbidden'}) ;
     },
-    //Admin can also be a Client by default
     isClient: (req: Request, res: Response, next: NextFunction) => {
-        if((req.body.role === UserRole.CLIENT || req.body.role === UserRole.ADMIN)){
+        if(req.user && (req.user.role === UserRole.CLIENT || req.user.role === UserRole.ADMIN)){
             return next();
         }
         return res.status(403).json({message: 'Forbidden'});
-    },
-
+    }
 }
+
+export default UserMiddleware;
 
 
 

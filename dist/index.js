@@ -30,10 +30,10 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 //////////////////////////////////////////////////////////////////////////////////////////////
 //First route test
-app.use("/test123", (req, res) => {
-    console.log("\nFirst Route succeed");
-    res.send("API sucessfully launched");
-});
+// app.use("/API", (req: Request, res: Response) => {
+//     //console.log("\nFirst Route succeed");
+//     res.send("Connected to API Co'Work sucessfully !");
+// });
 //Use des routes de bases
 app.use("/API/horaryPrice", HoraryPriceRoute_1.default);
 app.use("/API/activity", ActivityRoute_1.default);
